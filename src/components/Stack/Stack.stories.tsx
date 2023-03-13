@@ -1,22 +1,24 @@
-import { Meta } from '@storybook/react/types-6-0';
-import { Box } from '../Box/Box';
-import { Stack } from './Stack';
+import { Meta } from "@storybook/react/types-6-0";
+import { Box } from "../Box/Box";
+import { Stack } from "./Stack";
 
 export default {
-  title: 'Foundations/Stack',
+  title: "Foundations/Stack",
   component: Stack,
 } as Meta;
 
 const SPACE_UNIT = 8;
 
-const Item = () => <Box width={24} height={24} style={{ background: '#00E3D8' }} />;
+const Item = () => (
+  <Box width={24} height={24} style={{ background: "#00E3D8" }} />
+);
 
 export const RowDefinedGap = () => (
   <Box>
     <Stack
       gap={3 * SPACE_UNIT}
       style={{
-        background: '#EAEAFB',
+        background: "#EAEAFB",
       }}
     >
       <Item />
@@ -33,7 +35,7 @@ export const ColumnDefinedGap = () => (
       column
       gap={3 * SPACE_UNIT}
       style={{
-        background: '#EAEAFB',
+        background: "#EAEAFB",
       }}
     >
       <Item />
@@ -47,8 +49,8 @@ export const ColumnDefinedGap = () => (
 export const RowFluid = () => (
   <div
     style={{
-      width: '400px',
-      background: '#EAEAFB',
+      width: "400px",
+      background: "#EAEAFB",
     }}
   >
     <Stack fluid grow>
@@ -64,8 +66,8 @@ export const ColumnFluid = () => (
   <Box>
     <div
       style={{
-        height: '400px',
-        background: '#EAEAFB',
+        height: "400px",
+        background: "#EAEAFB",
       }}
     >
       <Stack column fluid grow>
@@ -84,9 +86,9 @@ export const ColumnDivider = () => (
       column
       gap={3 * SPACE_UNIT}
       style={{
-        background: '#EAEAFB',
+        background: "#EAEAFB",
       }}
-      divider={<Box width={24} height={4} style={{ background: '#BC00FE' }} />}
+      divider={<Box width={24} height={4} style={{ background: "#BC00FE" }} />}
     >
       <Item />
       <Item />
@@ -101,10 +103,10 @@ export const RowDivider = () => (
     <Stack
       gap={3 * SPACE_UNIT}
       style={{
-        background: '#EAEAFB',
+        background: "#EAEAFB",
       }}
       shrink
-      divider={<Box width={4} height={24} style={{ background: '#BC00FE' }} />}
+      divider={<Box width={4} height={24} style={{ background: "#BC00FE" }} />}
     >
       <Item />
       <Item />

@@ -45,10 +45,10 @@
     }
   },
   "scripts": {
-    "dev": "start-storybook -p 6006",
     "build:package": "vite build",
     "build:types": "api-extractor run --local",
     "build": "./scripts/build.bash",
+    "dev": "export NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006",
     "build:storybook": "build-storybook",
     "test": "cypress run --component --browser chrome",
     "test:open": "cypress open --component --browser chrome"
