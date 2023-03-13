@@ -103,8 +103,6 @@ export type ItemProps = {
 const Item = forwardRef<HTMLElement, ItemProps>((props, ref) => {
   const { children } = props;
 
-  // TODO: typecheck the parent, must be typeof Grid.Container
-
   const cssStyle: CSSProperties = useMemo(
     () => ({
       gridColumnStart: props.colStart,
