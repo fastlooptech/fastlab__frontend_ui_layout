@@ -7,23 +7,24 @@ import React, {
   useEffect,
   useMemo,
   useState,
-  useRef,
   createRef,
+  PropsWithChildren,
 } from "react";
 import { forwardRef } from "react";
 import { Children } from "~/utils/typing/children";
 import { SPACE_UNIT } from "~/utils/constants";
 import { Box } from "~/index";
 
-export type ContainerProps = {
+export type ContainerProps = PropsWithChildren<{
   "data-test-id"?: string;
-  children: Children | Children[];
   rows: number;
   cols: number;
   rowsGap?: number;
   colsGap?: number;
   className?: string;
   style?: CSSProperties;
+}> & {
+  children: React.ReactElement | React.ReactElement[];
 };
 
 const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
