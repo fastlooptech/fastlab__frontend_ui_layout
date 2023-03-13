@@ -1,11 +1,31 @@
 {
-  "name": "fastlab__frontend_ui_layout",
-  "private": true,
+  "name": "@fastlooptech/layout-components",
   "version": "0.0.0",
   "type": "module",
+  "access": "public",
+  "license": "MIT",
+  "private": false,
+  "file": [
+    "dist"
+  ],
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    },
+    "./*": {
+      "import": "./dist/*",
+      "require": "./dist/*"
+    }
+  },
   "scripts": {
     "dev": "start-storybook -p 6006",
-    "build": "vite build",
+    "build:package": "vite build",
+    "build:types": "api-extractor run --local",
+    "build": "./scripts/build.bash",
     "build:storybook": "build-storybook",
     "test": "cypress run --component --browser chrome",
     "test:open": "cypress open --component --browser chrome"
@@ -16,6 +36,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
+    "@microsoft/api-extractor": "^7.34.4",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",

@@ -6,7 +6,7 @@ import dts from 'vite-plugin-dts';
 // https://vitejs.dev/config/
 
 export default defineConfig({
-  plugins: [react(), dts({ insertTypesEntry: true })],
+  plugins: [react(), dts()],
   resolve: {
     alias: [{ find: '~', replacement: path.resolve(__dirname, 'src') }],
   },
@@ -14,7 +14,7 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: path.resolve(__dirname, './src/index.ts'),
-      name: 'layout-components',
+      name: '@fastlooptech/layout-components',
       formats: ['cjs', 'umd', 'es'],
       fileName: format => `index.${format}.js`,
     },
