@@ -67,7 +67,6 @@ export const WithGaps = () => (
     colsGap={8}
     rowsGap={3}
   >
-    <div></div>
     <Grid.Item
       style={{
         background: "red",
@@ -233,6 +232,34 @@ export const ItemsSelfJustifyAlign = () => (
   </Grid.Container>
 );
 
+export const SingleChildPositioned = () => (
+  <Grid.Container
+    style={{
+      background: "lightgrey",
+    }}
+    rows={4}
+    cols={2}
+  >
+    <Grid.Item
+      colStart={2}
+      colEnd={2}
+      rowStart={2}
+      rowEnd={4}
+      style={{
+        background: "green",
+      }}
+    >
+      <Box
+        width={100}
+        height={100}
+        style={{
+          background: "lime",
+        }}
+      />
+    </Grid.Item>
+  </Grid.Container>
+);
+
 export const TypeError = () => (
   <Grid.Container
     style={{
@@ -241,7 +268,9 @@ export const TypeError = () => (
     rows={4}
     cols={2}
   >
-    {/* <Grid.Item
+    <div></div>
+
+    <Grid.Item
       colStart={1}
       colEnd={3}
       rowStart={1}
@@ -258,6 +287,6 @@ export const TypeError = () => (
           background: "orange",
         }}
       />
-    </Grid.Item> */}
+    </Grid.Item>
   </Grid.Container>
 );
