@@ -50,3 +50,7 @@ This library was developed and is maintained by the FastLoop team.
 ## Feedback
 
 If you have any feedback or suggestions for this library, please don't hesitate to open an issue. We appreciate your input!
+
+## Support
+
+If you need help with this library, please contact us at [info_at_fastloop.it](mailto:info@fastloop.it) or visit our website at [https://fastloop.it](https://fastloop.it/).

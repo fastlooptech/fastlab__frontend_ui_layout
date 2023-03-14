@@ -1,10 +1,33 @@
 {
   "name": "@fastlooptech/layout-components",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "access": "public",
   "license": "MIT",
   "private": false,
+  "description": "A collection of layout components for React tailored on the needs of Fastloop",
+  "author": {
+    "name": "Fastloop",
+    "email": "info@fastloop.it",
+    "url": "https://fastloop.it"
+  },
+  "homepage": "https://github.com/fastlooptech/fastlab__frontend_ui_layout#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fastlooptech/fastlab__frontend_ui_layout"
+  },
+  "bugs": {
+    "url": "https://github.com/fastlooptech/fastlab__frontend_ui_layout/issues",
+    "email": "info@fastloop.it"
+  },
+  "keywords": [
+    "react",
+    "fastloop",
+    "fastlab",
+    "layout",
+    "components",
+    "ui"
+  ],
   "file": [
     "dist"
   ],
