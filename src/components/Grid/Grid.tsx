@@ -28,35 +28,27 @@ export type ContainerProps = PropsWithChildren<{
 };
 
 const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
-  const { children } = props;
   const [invalidError, setInvalidError] = useState(false);
   const errorMessage =
     "invalid child type, all children should be <Grid.Item />";
 
   const cloned = useMemo(
     () =>
-      React.Children.map(children, (child) =>
+      React.Children.map(props.children, (child) =>
         cloneElement(child, { ref: createRef() })
       ),
-    [children]
+    [props.children]
   );
 
   useEffect(() => {
     if (Array.isArray(cloned)) {
-      let count = 0;
-      cloned.forEach((child) => {
-        if (
+      const check = cloned.every((child) => {
+        return (
           child.ref?.current.dataset.check &&
           child.ref?.current.dataset.check === "grid-item"
-        )
-          count++;
+        );
       });
-      if (cloned.length !== count) {
-        console.error(errorMessage);
-        setInvalidError(true);
-      } else {
-        setInvalidError(false);
-      }
+      setInvalidError(check ? false : true);
     }
   }, [cloned]);
 
@@ -102,8 +94,6 @@ export type ItemProps = {
 };
 
 const Item = forwardRef<HTMLElement, ItemProps>((props, ref) => {
-  const { children } = props;
-
   const cssStyle: CSSProperties = useMemo(
     () => ({
       gridColumnStart: props.colStart,
@@ -128,7 +118,7 @@ const Item = forwardRef<HTMLElement, ItemProps>((props, ref) => {
       "data-test-id": props["data-test-id"],
       "data-check": "grid-item",
     },
-    ReactChildren.map(children, (child, index) => (
+    ReactChildren.map(props.children, (child, index) => (
       <Fragment key={index}>{child}</Fragment>
     ))
   );
