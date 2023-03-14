@@ -5,6 +5,19 @@
   "access": "public",
   "license": "MIT",
   "private": false,
+  "description": "A collection of layout components for React tailored on the needs of Fastloop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fastlooptech/fastlab__frontend_ui_layout"
+  },
+  "keywords": [
+    "react",
+    "fastloop",
+    "fastlab",
+    "layout",
+    "components",
+    "ui"
+  ],
   "file": [
     "dist"
   ],
