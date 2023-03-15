@@ -3,16 +3,24 @@ import { forwardRef } from 'react';
 import { Space } from '~/components/Space/Space';
 import { Box } from '~/components/Box/Box';
 import { Children } from '~/utils/typing/children';
-import { SPACE_UNIT } from '~/utils/constants';
 
-export type StackProps = ComponentProps<typeof Space> &
-  ComponentProps<typeof Box> & {
+export type StackProps = Omit<ComponentProps<typeof Space>, 'size' | 'fluid'> &
+  Omit<ComponentProps<typeof Box>, 'size'> & {
     children: Children[];
     divider?: Children;
-  };
+  } & (
+    | {
+        fluid?: never;
+        gap: number;
+      }
+    | {
+        fluid: boolean;
+        gap?: never;
+      }
+  );
 
 export const Stack = forwardRef<HTMLElement, StackProps>((props, ref) => {
-  const { children, fluid, units, divider, ...boxProps } = props;
+  const { children, fluid, gap, divider, ...boxProps } = props;
 
   if (!divider) {
     return (
@@ -20,7 +28,7 @@ export const Stack = forwardRef<HTMLElement, StackProps>((props, ref) => {
         {...boxProps}
         ref={ref}
         style={{
-          gap: units ? units * SPACE_UNIT : undefined,
+          gap: gap,
           justifyContent: fluid ? 'space-between' : undefined,
           ...boxProps.style,
           ...props.style,
@@ -38,7 +46,7 @@ export const Stack = forwardRef<HTMLElement, StackProps>((props, ref) => {
         {...boxProps}
         ref={ref}
         style={{
-          gap: units ? units * 0.5 * SPACE_UNIT : undefined,
+          gap: gap ? gap * 0.5 : undefined,
           justifyContent: fluid ? 'space-between' : undefined,
           ...boxProps.style,
           ...props.style,

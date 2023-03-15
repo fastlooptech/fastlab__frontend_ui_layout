@@ -1,6 +1,5 @@
 import { CSSProperties, forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { Box } from '~/components/Box/Box';
-import { SPACE_UNIT } from '~/utils/constants';
 
 export type SpaceProps = {
   'data-test-id'?: string;
@@ -26,7 +25,7 @@ export type SpaceProps = {
        * The space size.
        * @type number
        */
-      units: number;
+      size: number;
       fluid?: never;
     }
   | {
@@ -35,7 +34,7 @@ export type SpaceProps = {
        * @type boolean
        */
       fluid: boolean;
-      units?: never;
+      size?: never;
     }
 );
 
@@ -65,10 +64,10 @@ export const Space = forwardRef<HTMLDivElement, SpaceProps>((props, forwardedRef
   function boxProps() {
     switch (parentDirection) {
       case 'row':
-        const width = props.units ? props.units * SPACE_UNIT : undefined;
+        const width = props.size;
         return { width, basis: width };
       case 'column':
-        const height = props.units ? props.units * SPACE_UNIT : undefined;
+        const height = props.size;
         return { height, basis: height };
     }
   }
