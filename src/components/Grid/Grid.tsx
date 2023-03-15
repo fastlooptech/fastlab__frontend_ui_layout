@@ -28,7 +28,7 @@ export type ContainerProps = PropsWithChildren<{
 };
 
 const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
-  const [invalidError, setInvalidError] = useState(false);
+  // const [invalidError, setInvalidError] = useState(false);
   const errorMessage =
     "invalid child type, all children should be <Grid.Item />";
 
@@ -48,7 +48,7 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
           child.ref?.current.dataset.check === "grid-item"
         );
       });
-      setInvalidError(check ? false : true);
+      if (!check) console.warn(errorMessage);
     }
   }, [cloned]);
 
@@ -71,11 +71,9 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
       data-test-id={props["data-test-id"]}
       className={props.className}
     >
-      {invalidError ? (
-        <div>{errorMessage}</div>
-      ) : (
-        cloned?.map((item, index) => <Fragment key={index}>{item}</Fragment>)
-      )}
+      {cloned?.map((item, index) => (
+        <Fragment key={index}>{item}</Fragment>
+      ))}
     </div>
   );
 });
