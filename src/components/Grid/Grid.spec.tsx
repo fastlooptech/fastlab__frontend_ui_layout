@@ -83,15 +83,12 @@ it("Grid Items should have correct parent", () => {
   );
   cy.get('[data-test-id="grid-item-1"]')
     .should("exist")
-    .should("have.attr", "data-check", "grid-item")
     .parent('[data-test-id="grid-container"]');
   cy.get('[data-test-id="grid-item-2"]')
     .should("exist")
-    .should("have.attr", "data-check", "grid-item")
     .parent('[data-test-id="grid-container"]');
   cy.get('[data-test-id="grid-item-3"]')
     .should("exist")
-    .should("have.attr", "data-check", "grid-item")
     .parent('[data-test-id="grid-container"]');
 });
 

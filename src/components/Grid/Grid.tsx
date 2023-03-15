@@ -1,4 +1,4 @@
-import React, {
+import {
   Children as ReactChildren,
   createElement,
   cloneElement,
@@ -6,16 +6,14 @@ import React, {
   Fragment,
   useEffect,
   useMemo,
-  useState,
   createRef,
-  PropsWithChildren,
 } from "react";
 import { forwardRef } from "react";
 import { Children } from "~/utils/typing/children";
 import { SPACE_UNIT } from "~/utils/constants";
 import { Box } from "~/index";
 
-export type ContainerProps = PropsWithChildren<{
+export type ContainerProps = {
   "data-test-id"?: string;
   rows: number;
   cols: number;
@@ -23,34 +21,21 @@ export type ContainerProps = PropsWithChildren<{
   colsGap?: number;
   className?: string;
   style?: CSSProperties;
-}> & {
-  children: React.ReactElement | React.ReactElement[];
+  children: Children | Children[];
 };
 
 const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
-  // const [invalidError, setInvalidError] = useState(false);
   const errorMessage =
     "invalid child type, all children should be <Grid.Item />";
 
-  const cloned = useMemo(
-    () =>
-      React.Children.map(props.children, (child) =>
-        cloneElement(child, { ref: createRef() })
-      ),
-    [props.children]
-  );
-
   useEffect(() => {
-    if (Array.isArray(cloned)) {
-      const check = cloned.every((child) => {
-        return (
-          child.ref?.current.dataset.check &&
-          child.ref?.current.dataset.check === "grid-item"
-        );
+    if (Array.isArray(props.children)) {
+      const check = props.children.every((child: any) => {
+        return child?.type?.render?.displayName == "Grid.Item";
       });
       if (!check) console.warn(errorMessage);
     }
-  }, [cloned]);
+  }, [props.children]);
 
   const cssStyle: CSSProperties = useMemo(
     () => ({
@@ -71,7 +56,7 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
       data-test-id={props["data-test-id"]}
       className={props.className}
     >
-      {cloned?.map((item, index) => (
+      {ReactChildren.map(props.children, (item, index) => (
         <Fragment key={index}>{item}</Fragment>
       ))}
     </div>
@@ -114,13 +99,14 @@ const Item = forwardRef<HTMLElement, ItemProps>((props, ref) => {
       className: props.className,
       style: cssStyle,
       "data-test-id": props["data-test-id"],
-      "data-check": "grid-item",
     },
     ReactChildren.map(props.children, (child, index) => (
       <Fragment key={index}>{child}</Fragment>
     ))
   );
 });
+
+Item.displayName = "Grid.Item";
 
 export const Grid = {
   Container,
