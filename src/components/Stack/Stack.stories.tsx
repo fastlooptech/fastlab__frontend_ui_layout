@@ -7,159 +7,109 @@ export default {
   component: Stack,
 } as Meta;
 
-export const RowUnits3 = () => (
-  <Stack
-    units={3}
-    style={{
-      background: '#f0f0f0',
-    }}
-  >
-    <Box
-      width={24}
-      height={24}
+const SPACE_UNIT = 8;
+
+const Item = () => <Box width={24} height={24} style={{ background: '#00E3D8' }} />;
+
+export const RowDefinedGap = () => (
+  <Box>
+    <Stack
+      gap={3 * SPACE_UNIT}
       style={{
-        background: 'lightgray',
+        background: '#EAEAFB',
       }}
-    />
-    <Box
-      width={24}
-      height={24}
-      style={{
-        background: 'lightgray',
-      }}
-    />
-    <Box
-      width={24}
-      height={24}
-      style={{
-        background: 'lightgray',
-      }}
-    />
-    <Box
-      width={24}
-      height={24}
-      style={{
-        background: 'lightgray',
-      }}
-    />
-  </Stack>
+    >
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+    </Stack>
+  </Box>
 );
 
-export const ColumnUnits3 = () => (
-  <Stack
-    column
-    units={3}
-    style={{
-      background: '#f0f0f0',
-    }}
-  >
-    <Box
-      width={24}
-      height={24}
+export const ColumnDefinedGap = () => (
+  <Box>
+    <Stack
+      column
+      gap={3 * SPACE_UNIT}
       style={{
-        background: 'lightgray',
+        background: '#EAEAFB',
       }}
-    />
-    <Box
-      width={24}
-      height={24}
-      style={{
-        background: 'lightgray',
-      }}
-    />
-    <Box
-      width={24}
-      height={24}
-      style={{
-        background: 'lightgray',
-      }}
-    />
-    <Box
-      width={24}
-      height={24}
-      style={{
-        background: 'lightgray',
-      }}
-    />
-  </Stack>
+    >
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+    </Stack>
+  </Box>
 );
 
 export const RowFluid = () => (
   <div
     style={{
       width: '400px',
-      background: '#f0f0f0',
+      background: '#EAEAFB',
     }}
   >
     <Stack fluid grow>
-      <Box
-        width={24}
-        height={24}
-        style={{
-          background: 'lightgray',
-        }}
-      />
-      <Box
-        width={24}
-        height={24}
-        style={{
-          background: 'lightgray',
-        }}
-      />
-      <Box
-        width={24}
-        height={24}
-        style={{
-          background: 'lightgray',
-        }}
-      />
-      <Box
-        width={24}
-        height={24}
-        style={{
-          background: 'lightgray',
-        }}
-      />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
     </Stack>
   </div>
 );
 
 export const ColumnFluid = () => (
-  <div
-    style={{
-      height: '400px',
-      background: '#f0f0f0',
-    }}
-  >
-    <Stack column fluid grow>
-      <Box
-        width={24}
-        height={24}
-        style={{
-          background: 'lightgray',
-        }}
-      />
-      <Box
-        width={24}
-        height={24}
-        style={{
-          background: 'lightgray',
-        }}
-      />
-      <Box
-        width={24}
-        height={24}
-        style={{
-          background: 'lightgray',
-        }}
-      />
-      <Box
-        width={24}
-        height={24}
-        style={{
-          background: 'lightgray',
-        }}
-      />
+  <Box>
+    <div
+      style={{
+        height: '400px',
+        background: '#EAEAFB',
+      }}
+    >
+      <Stack column fluid grow>
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+      </Stack>
+    </div>
+  </Box>
+);
+
+export const ColumnDivider = () => (
+  <Box>
+    <Stack
+      column
+      gap={3 * SPACE_UNIT}
+      style={{
+        background: '#EAEAFB',
+      }}
+      divider={<Box width={24} height={4} style={{ background: '#BC00FE' }} />}
+    >
+      <Item />
+      <Item />
+      <Item />
+      <Item />
     </Stack>
-  </div>
+  </Box>
+);
+
+export const RowDivider = () => (
+  <Box>
+    <Stack
+      gap={3 * SPACE_UNIT}
+      style={{
+        background: '#EAEAFB',
+      }}
+      shrink
+      divider={<Box width={4} height={24} style={{ background: '#BC00FE' }} />}
+    >
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+    </Stack>
+  </Box>
 );

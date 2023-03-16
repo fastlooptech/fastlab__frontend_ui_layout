@@ -7,11 +7,13 @@ export default {
   component: Space,
 } as Meta;
 
+const SPACE_UNIT = 8;
+
 export const Horizontal = () => (
   <Box>
     <span>Start</span>
     <Space
-      units={2}
+      size={2 * SPACE_UNIT}
       style={{
         background: 'lightgray',
         height: '16px',
@@ -25,7 +27,7 @@ export const Vertical = () => (
   <Box column>
     <span>Start</span>
     <Space
-      units={2}
+      size={2 * SPACE_UNIT}
       style={{
         background: 'lightgray',
         width: '16px',

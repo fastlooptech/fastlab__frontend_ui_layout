@@ -1,8 +1,7 @@
 import { mount } from 'cypress/react';
-import { SPACE_UNIT } from '~/utils/constants';
 import { Space } from './Space';
 
-const TEST_VALUE = 2;
+const TEST_VALUE = 24;
 
 it('Should have defined height in a column', () => {
   mount(
@@ -12,10 +11,10 @@ it('Should have defined height in a column', () => {
         flexDirection: 'column',
       }}
     >
-      <Space units={TEST_VALUE} data-test-id="col" />
+      <Space size={TEST_VALUE} data-test-id="col" />
     </div>
   );
-  cy.get('[data-test-id="col"]').should('have.css', 'height', SPACE_UNIT * TEST_VALUE + 'px');
+  cy.get('[data-test-id="col"]').should('have.css', 'height', TEST_VALUE + 'px');
 });
 
 it('Should have defined width and basis in a row', () => {
@@ -26,10 +25,10 @@ it('Should have defined width and basis in a row', () => {
         flexDirection: 'row',
       }}
     >
-      <Space units={TEST_VALUE} data-test-id="row" />
+      <Space size={TEST_VALUE} data-test-id="row" />
     </div>
   );
-  cy.get('[data-test-id="row"]').should('have.css', 'width', SPACE_UNIT * TEST_VALUE + 'px');
+  cy.get('[data-test-id="row"]').should('have.css', 'width', TEST_VALUE + 'px');
 });
 
 it('Should have flex-grow and flex-shrink if fluid', () => {

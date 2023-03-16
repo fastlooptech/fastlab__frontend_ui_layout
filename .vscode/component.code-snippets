@@ -1,0 +1,45 @@
+{
+  "New Component": {
+    "scope": "typescriptreact",
+    "prefix": "component",
+    "body": [
+      "interface ${TM_FILENAME_BASE}Props {};",
+      "",
+      "export function ${TM_FILENAME_BASE}(props: ${TM_FILENAME_BASE}Props) {",
+      "  return ($0)",
+      "}"
+    ],
+    "description": "Create a new React function component"
+  },
+  "New Story": {
+    "scope": "typescriptreact",
+    "prefix": "story",
+    "body": [
+      "import { Meta } from '@storybook/react/types-6-0';",
+      "import { ${1:${TM_FILENAME_BASE/(.*?)\\..*/$1/}} } from './${1:${TM_FILENAME_BASE/(.*?)\\..*/$1/}}';",
+      "",
+      "export default {",
+      "  title: 'Components/${1:${TM_FILENAME_BASE/(.*?)\\..*/$1/}}',",
+      "  component: ${1:${TM_FILENAME_BASE/(.*?)\\..*/$1/}},",
+      "} as Meta;",
+      "",
+      "export const Default = () => <${1:${TM_FILENAME_BASE/(.*?)\\..*/$1/}} />;"
+    ],
+    "description": "Create a new React function component"
+  },
+  "New Component Tests": {
+    "scope": "typescriptreact",
+    "prefix": "test",
+    "body": [
+      "import { mount } from 'cypress/react';",
+      "import { ${1:${TM_FILENAME_BASE/(.*?)\\..*/$1/}} } from './${1:${TM_FILENAME_BASE/(.*?)\\..*/$1/}}';",
+      "",
+      "describe('${1:${TM_FILENAME_BASE/(.*?)\\..*/$1/}}', () => {",
+      "  it('should render successfully', () => {",
+      "    mount(<${1:${TM_FILENAME_BASE/(.*?)\\..*/$1/}} data-test-id='$0' />);",
+      "  });",
+      "});"
+    ],
+    "description": "Create a new React function component"
+  }
+}
