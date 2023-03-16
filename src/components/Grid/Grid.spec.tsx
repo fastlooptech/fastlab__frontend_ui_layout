@@ -136,20 +136,20 @@ it("Grid Items should have correct css", () => {
     .should(
       "have.attr",
       "style",
-      `box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row nowrap; flex: 0 1 auto; justify-content: center; align-items: center; grid-area: 1 / 1 / 3 / 3; background: yellow;`
+      `grid-area: 1 / 1 / 3 / 3; background: yellow;`
     );
   cy.get('[data-test-id="grid-item-2"]')
     .should("exist")
     .should(
       "have.attr",
       "style",
-      `box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row nowrap; flex: 0 1 auto; justify-content: center; align-items: center; grid-area: 2 / 2 / 4 / 2; background: green;`
+      `grid-area: 2 / 2 / 4 / 2; background: green;`
     );
   cy.get('[data-test-id="grid-item-3"]')
     .should("exist")
     .should(
       "have.attr",
       "style",
-      `box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row nowrap; flex: 0 1 auto; justify-content: center; align-items: center; grid-column-start: 1; grid-row-start: 4; background: red;`
+      `grid-column-start: 1; grid-row-start: 4; background: red;`
     );
 });

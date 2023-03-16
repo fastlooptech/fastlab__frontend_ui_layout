@@ -9,7 +9,6 @@ import {
 import { forwardRef } from "react";
 import { Children } from "~/utils/typing/children";
 import { SPACE_UNIT } from "~/utils/constants";
-import { Box } from "~/index";
 
 export type ContainerProps = {
   "data-test-id"?: string;
@@ -28,9 +27,9 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
 
   useEffect(() => {
     if (Array.isArray(props.children)) {
-      const check = props.children.every((child: any) => {
-        return child?.type?.render?.displayName == "Grid.Item";
-      });
+      const check = props.children.every(
+        (child: any) => child?.type?.render?.displayName == "Grid.Item"
+      );
       if (!check) console.warn(errorMessage);
     }
   }, [props.children]);
@@ -89,10 +88,8 @@ const Item = forwardRef<HTMLElement, ItemProps>((props, ref) => {
   );
 
   return createElement(
-    Box,
+    "div",
     {
-      vAlignContent: "center",
-      hAlignContent: "center",
       ref: ref,
       className: props.className,
       style: cssStyle,
