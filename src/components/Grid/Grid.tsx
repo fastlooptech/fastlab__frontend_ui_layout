@@ -72,7 +72,7 @@ export type ItemProps = {
   style?: CSSProperties;
 };
 
-const Item = forwardRef<HTMLElement, ItemProps>((props, ref) => {
+const Item = forwardRef<HTMLDivElement, ItemProps>((props, ref) => {
   const cssStyle: CSSProperties = useMemo(
     () => ({
       gridColumnStart: props.colStart,
@@ -86,17 +86,17 @@ const Item = forwardRef<HTMLElement, ItemProps>((props, ref) => {
     [props.colStart, props.colEnd, props.rowStart, props.rowEnd, props.style]
   );
 
-  return createElement(
-    "div",
-    {
-      ref: ref,
-      className: props.className,
-      style: cssStyle,
-      "data-test-id": props["data-test-id"],
-    },
-    ReactChildren.map(props.children, (child, index) => (
-      <Fragment key={index}>{child}</Fragment>
-    ))
+  return (
+    <div
+      ref={ref}
+      className={props.className}
+      style={cssStyle}
+      data-test-id={props["data-test-id"]}
+    >
+      {ReactChildren.map(props.children, (child, index) => (
+        <Fragment key={index}>{child}</Fragment>
+      ))}
+    </div>
   );
 });
 
