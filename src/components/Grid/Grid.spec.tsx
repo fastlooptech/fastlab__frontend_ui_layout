@@ -1,17 +1,16 @@
 import { mount } from "cypress/react";
 import { Box } from "~/index";
-import { SPACE_UNIT } from "~/utils/constants";
 import { Grid } from "./Grid";
 
-const TEST_VALUE = 2;
+const SPACE_UNIT = 8;
 
 it("Grid Container should have correct css props", () => {
   mount(
     <Grid.Container
       rows={3}
       cols={2}
-      colsGap={4}
-      rowsGap={1}
+      colsGap={SPACE_UNIT * 4}
+      rowsGap={SPACE_UNIT}
       data-test-id="grid-container"
       style={{
         background: "red",

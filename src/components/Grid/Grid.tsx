@@ -8,7 +8,6 @@ import {
 } from "react";
 import { forwardRef } from "react";
 import { Children } from "~/utils/typing/children";
-import { SPACE_UNIT } from "~/utils/constants";
 
 export type ContainerProps = {
   "data-test-id"?: string;
@@ -39,8 +38,8 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
       display: "grid",
       gridTemplateColumns: `repeat(${props.cols}, 1fr)`,
       gridTemplateRows: `repeat(${props.rows}, 1fr)`,
-      columnGap: SPACE_UNIT * (props.colsGap || 0),
-      rowGap: SPACE_UNIT * (props.rowsGap || 0),
+      columnGap: props.colsGap || 0,
+      rowGap: props.rowsGap || 0,
       ...props.style,
     }),
     [props.rows, props.rowsGap, props.cols, props.colsGap, props.style]
