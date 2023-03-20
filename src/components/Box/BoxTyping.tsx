@@ -1,6 +1,6 @@
-import { AriaAttributes, DOMAttributes, HTMLProps } from "react";
-import { Children } from "~/utils/typing/children";
-import { Override } from "~/utils/typing/override";
+import { AriaAttributes, HTMLProps } from 'react';
+import { Children } from '~/utils/typing/children';
+import { Override } from '~/utils/typing/override';
 
 export interface BoxPropsOverride {
   /** FlexView content */
@@ -8,9 +8,9 @@ export interface BoxPropsOverride {
   /** flex-direction: column */
   column?: boolean;
   /** align content vertically */
-  vAlignContent?: "top" | "center" | "bottom";
+  vAlignContent?: 'top' | 'center' | 'bottom';
   /** align content horizontally */
-  hAlignContent?: "left" | "center" | "right";
+  hAlignContent?: 'left' | 'center' | 'right';
   /** margin-left property ("auto" to align self right) */
   marginLeft?: string | number;
   /** margin-top property ("auto" to align self bottom) */
@@ -39,12 +39,11 @@ export interface BoxPropsOverride {
   component?: keyof JSX.IntrinsicElements;
 }
 
-interface AriaAndDataProps extends AriaAttributes {
+export interface AriaAndDataProps extends AriaAttributes {
   /** data custom properties */
   [key: `data-${string}`]: unknown;
 }
 
-type ElementProps = Omit<HTMLProps<HTMLElement>, "ref">;
+export type ElementProps = Omit<HTMLProps<HTMLElement>, 'ref'>;
 
-export type BoxProps = Override<ElementProps, BoxPropsOverride> &
-  AriaAndDataProps;
+export type BoxProps = Override<ElementProps, BoxPropsOverride> & AriaAndDataProps;
