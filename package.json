@@ -52,7 +52,7 @@
     "build:storybook": "build-storybook",
     "test": "cypress run --component --browser chrome",
     "test:open": "cypress open --component --browser chrome",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "dependencies": {
     "react": "^18.2.0",
