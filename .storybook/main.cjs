@@ -10,6 +10,7 @@ module.exports = {
   features: {
     storyStoreV7: true,
   },
+
   viteFinal: async (config, { configType }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
