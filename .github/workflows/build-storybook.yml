@@ -5,6 +5,7 @@ on:
       - main
 jobs:
   build-and-deploy:
+    name: Build and Deploy Storybook
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
