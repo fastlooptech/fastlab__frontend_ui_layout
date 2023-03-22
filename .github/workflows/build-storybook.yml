@@ -1,5 +1,8 @@
 name: Build and Deploy
-on: [push]
+on:
+  push:
+    branches:
+      - feat/FL-156-publish-gh-pages
 
 jobs:
   build-and-deploy:
@@ -17,7 +20,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # BRANCH: main
           BRANCH: feat/FL-156-publish-gh-pages
           FOLDER: docs-build
           CLEAN: true
