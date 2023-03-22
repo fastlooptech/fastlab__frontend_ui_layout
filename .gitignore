@@ -34,3 +34,7 @@ dist-ssr
 # Cypress video and screenshots
 cypress/videos
 cypress/screenshots
+
+# Storybook build 
+storybook-static
+docs
