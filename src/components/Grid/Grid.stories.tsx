@@ -1,66 +1,17 @@
-import { Meta } from "@storybook/react/types-6-0";
-import { Box } from "../Box/Box";
-import { Grid } from "./Grid";
+import { Meta } from '@storybook/react/types-6-0';
+import { Box } from '../Box/Box';
+import { Grid } from './Grid';
+import palette from '../../../assets/fl-color-palette.json';
 
 export default {
-  title: "Foundations/Grid",
+  title: 'Foundations/Grid',
   components: [Grid.Container, Grid.Item],
 } as Meta;
 
 export const AutoFill = () => (
   <Grid.Container
     style={{
-      background: "lightgrey",
-    }}
-    rows={3}
-    cols={2}
-  >
-    <Grid.Item
-      style={{
-        background: "red",
-      }}
-    >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "orange",
-        }}
-      />
-    </Grid.Item>
-    <Grid.Item
-      style={{
-        background: "green",
-      }}
-    >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "lime",
-        }}
-      />
-    </Grid.Item>
-    <Grid.Item
-      style={{
-        background: "yellow",
-      }}
-    >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "gold",
-        }}
-      />
-    </Grid.Item>
-  </Grid.Container>
-);
-
-export const WithGaps = () => (
-  <Grid.Container
-    style={{
-      background: "lightgrey",
+      background: palette.neutral[100],
     }}
     rows={3}
     cols={2}
@@ -69,42 +20,58 @@ export const WithGaps = () => (
   >
     <Grid.Item
       style={{
-        background: "red",
+        background: palette.neutral[300],
       }}
     >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "orange",
-        }}
-      />
+      <Box width={100} height={100} />
     </Grid.Item>
     <Grid.Item
       style={{
-        background: "green",
+        background: palette.neutral[300],
       }}
     >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "lime",
-        }}
-      />
+      <Box width={100} height={100} />
     </Grid.Item>
     <Grid.Item
       style={{
-        background: "yellow",
+        background: palette.neutral[300],
       }}
     >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "gold",
-        }}
-      />
+      <Box width={100} height={100} />
+    </Grid.Item>
+  </Grid.Container>
+);
+
+export const WithGaps = () => (
+  <Grid.Container
+    style={{
+      background: palette.neutral[100],
+    }}
+    cols={2}
+    rows={2}
+    colsGap={8}
+    rowsGap={8}
+  >
+    <Grid.Item
+      style={{
+        background: palette.neutral[300],
+      }}
+    >
+      <Box width={100} height={100} />
+    </Grid.Item>
+    <Grid.Item
+      style={{
+        background: palette.neutral[300],
+      }}
+    >
+      <Box width={100} height={100} />
+    </Grid.Item>
+    <Grid.Item
+      style={{
+        background: palette.neutral[300],
+      }}
+    >
+      <Box width={100} height={100} />
     </Grid.Item>
   </Grid.Container>
 );
@@ -112,10 +79,12 @@ export const WithGaps = () => (
 export const ItemsPositioning = () => (
   <Grid.Container
     style={{
-      background: "lightgrey",
+      background: palette.neutral[100],
     }}
     rows={4}
     cols={2}
+    rowsGap={8}
+    colsGap={8}
   >
     <Grid.Item
       colStart={1}
@@ -123,16 +92,10 @@ export const ItemsPositioning = () => (
       rowStart={1}
       rowEnd={3}
       style={{
-        background: "red",
+        background: palette.neutral[300],
       }}
     >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "orange",
-        }}
-      />
+      <Box width={100} height={100} />
     </Grid.Item>
     <Grid.Item
       colStart={2}
@@ -140,31 +103,19 @@ export const ItemsPositioning = () => (
       rowStart={2}
       rowEnd={4}
       style={{
-        background: "green",
+        background: palette.neutral[300],
       }}
     >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "lime",
-        }}
-      />
+      <Box width={100} height={100} />
     </Grid.Item>
     <Grid.Item
       colStart={1}
       rowStart={4}
       style={{
-        background: "yellow",
+        background: palette.neutral[300],
       }}
     >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "gold",
-        }}
-      />
+      <Box width={100} height={100} />
     </Grid.Item>
   </Grid.Container>
 );
@@ -172,7 +123,7 @@ export const ItemsPositioning = () => (
 export const ItemsSelfJustifyAlign = () => (
   <Grid.Container
     style={{
-      background: "lightgrey",
+      background: palette.neutral[100],
     }}
     rows={4}
     cols={2}
@@ -181,53 +132,34 @@ export const ItemsSelfJustifyAlign = () => (
       colStart={1}
       colEnd={3}
       rowStart={1}
-      rowEnd={3}
+      rowEnd={2}
       justifySelf="start"
       style={{
-        background: "red",
+        background: palette.neutral[300],
       }}
     >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "orange",
-        }}
-      />
+      <Box width={100} height={100} />
     </Grid.Item>
     <Grid.Item
       colStart={2}
-      colEnd={2}
-      rowStart={2}
+      rowStart={3}
       rowEnd={4}
-      alignSelf="end"
+      justifySelf="end"
       style={{
-        background: "green",
+        background: palette.neutral[300],
       }}
     >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "lime",
-        }}
-      />
+      <Box width={100} height={100} />
     </Grid.Item>
     <Grid.Item
       colStart={1}
       rowStart={4}
       justifySelf="center"
       style={{
-        background: "yellow",
+        background: palette.neutral[300],
       }}
     >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "gold",
-        }}
-      />
+      <Box width={100} height={100} />
     </Grid.Item>
   </Grid.Container>
 );
@@ -235,7 +167,7 @@ export const ItemsSelfJustifyAlign = () => (
 export const SingleChildPositioned = () => (
   <Grid.Container
     style={{
-      background: "lightgrey",
+      background: palette.neutral[100],
     }}
     rows={4}
     cols={2}
@@ -246,47 +178,10 @@ export const SingleChildPositioned = () => (
       rowStart={2}
       rowEnd={4}
       style={{
-        background: "green",
+        background: palette.neutral[300],
       }}
     >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "lime",
-        }}
-      />
-    </Grid.Item>
-  </Grid.Container>
-);
-
-export const TypeError = () => (
-  <Grid.Container
-    style={{
-      background: "lightgrey",
-    }}
-    rows={4}
-    cols={2}
-  >
-    <div></div>
-
-    <Grid.Item
-      colStart={1}
-      colEnd={3}
-      rowStart={1}
-      rowEnd={3}
-      justifySelf="start"
-      style={{
-        background: "red",
-      }}
-    >
-      <Box
-        width={100}
-        height={100}
-        style={{
-          background: "orange",
-        }}
-      />
+      <Box width={100} height={100} />
     </Grid.Item>
   </Grid.Container>
 );

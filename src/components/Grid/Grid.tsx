@@ -1,16 +1,9 @@
-import {
-  Children as ReactChildren,
-  createElement,
-  CSSProperties,
-  Fragment,
-  useEffect,
-  useMemo,
-} from "react";
-import { forwardRef } from "react";
-import { Children } from "~/utils/typing/children";
+import { Children as ReactChildren, CSSProperties, Fragment, useEffect, useMemo } from 'react';
+import { forwardRef } from 'react';
+import { Children } from '~/utils/typing/children';
 
 export type ContainerProps = {
-  "data-test-id"?: string;
+  'data-test-id'?: string;
   rows: number;
   cols: number;
   rowsGap?: number;
@@ -21,21 +14,18 @@ export type ContainerProps = {
 };
 
 const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
-  const errorMessage =
-    "invalid child type, all children should be <Grid.Item />";
+  const errorMessage = 'invalid child type, all children should be <Grid.Item />';
 
   useEffect(() => {
     if (Array.isArray(props.children)) {
-      const check = props.children.every(
-        (child: any) => child?.type?.render?.displayName == "Grid.Item"
-      );
+      const check = props.children.every((child: any) => child?.type?.render?.displayName == 'Grid.Item');
       if (!check) console.warn(errorMessage);
     }
   }, [props.children]);
 
   const cssStyle: CSSProperties = useMemo(
     () => ({
-      display: "grid",
+      display: 'grid',
       gridTemplateColumns: `repeat(${props.cols}, 1fr)`,
       gridTemplateRows: `repeat(${props.rows}, 1fr)`,
       columnGap: props.colsGap || 0,
@@ -46,12 +36,7 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
   );
 
   return (
-    <div
-      ref={ref}
-      style={cssStyle}
-      data-test-id={props["data-test-id"]}
-      className={props.className}
-    >
+    <div ref={ref} style={cssStyle} data-test-id={props['data-test-id']} className={props.className}>
       {ReactChildren.map(props.children, (item, index) => (
         <Fragment key={index}>{item}</Fragment>
       ))}
@@ -60,14 +45,14 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
 });
 
 export type ItemProps = {
-  "data-test-id"?: string;
+  'data-test-id'?: string;
   children: Children;
   colStart?: number;
   colEnd?: number;
   rowStart?: number;
   rowEnd?: number;
-  justifySelf?: "start" | "end" | "center" | "stretch";
-  alignSelf?: "start" | "end" | "center" | "stretch";
+  justifySelf?: 'start' | 'end' | 'center' | 'stretch';
+  alignSelf?: 'start' | 'end' | 'center' | 'stretch';
   className?: string;
   style?: CSSProperties;
 };
@@ -87,12 +72,7 @@ const Item = forwardRef<HTMLDivElement, ItemProps>((props, ref) => {
   );
 
   return (
-    <div
-      ref={ref}
-      className={props.className}
-      style={cssStyle}
-      data-test-id={props["data-test-id"]}
-    >
+    <div ref={ref} className={props.className} style={cssStyle} data-test-id={props['data-test-id']}>
       {ReactChildren.map(props.children, (child, index) => (
         <Fragment key={index}>{child}</Fragment>
       ))}
@@ -100,7 +80,7 @@ const Item = forwardRef<HTMLDivElement, ItemProps>((props, ref) => {
   );
 });
 
-Item.displayName = "Grid.Item";
+Item.displayName = 'Grid.Item';
 
 export const Grid = {
   Container,
