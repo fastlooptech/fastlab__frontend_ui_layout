@@ -26,5 +26,3 @@ jobs:
           folder: docs
           branch: main
           target_folder: docs
-          clean: true
-
