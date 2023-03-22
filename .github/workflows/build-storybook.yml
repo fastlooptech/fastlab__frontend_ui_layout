@@ -17,10 +17,10 @@ jobs:
           npm ci
           npm run build:storybook
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.6.2
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           BRANCH: feat/FL-156-publish-gh-pages
-          FOLDER: docs-build
+          FOLDER: docs
           CLEAN: true
           TARGET_FOLDER: docs
