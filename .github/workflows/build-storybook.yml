@@ -2,8 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - feat/FL-156-publish-gh-pages
-
+      - main
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -24,8 +23,3 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           folder: docs
-          # GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-          # BRANCH: feat/FL-156-publish-gh-pages
-          # FOLDER: docs
-          # CLEAN: true
-          # TARGET_FOLDER: docs
