@@ -1,10 +1,10 @@
-import { Children as ReactChildren, ComponentProps, Fragment } from "react";
-import { forwardRef } from "react";
+import { Children as ReactChildren, ComponentProps, Fragment, useEffect, useState } from 'react';
+import { forwardRef } from 'react';
 
-import { Box } from "~/components/Box/Box";
-import { Children } from "~/utils/typing/children";
+import { Box } from '~/components/Box/Box';
+import { Children } from '~/utils/typing/children';
 
-export type StackProps = Omit<ComponentProps<typeof Box>, "size"> & {
+export type StackProps = Omit<ComponentProps<typeof Box>, 'size'> & {
   /**
    * The children to render inside the stack. Stack will not accept only 1 child, it must have at least 2. If you need to place only 1 child please prefer using Box.
    * @default []
@@ -68,13 +68,18 @@ export type StackProps = Omit<ComponentProps<typeof Box>, "size"> & {
 
 export const Stack = forwardRef<HTMLElement, StackProps>((props, ref) => {
   const { children, fluid, gap, divider, ...boxProps } = props;
+  const [content, setChildren] = useState<Children[]>(children.filter(child => !!child));
+
+  useEffect(() => {
+    setChildren(children.filter(child => !!child));
+  }, [children]);
 
   const commonProps = {
     ...boxProps,
     ref: ref,
-    height: fluid && boxProps.column ? "100%" : props.height,
-    width: fluid && !boxProps.column ? "100%" : props.width,
-    "data-test-id": props["data-test-id"],
+    height: fluid && boxProps.column ? '100%' : props.height,
+    width: fluid && !boxProps.column ? '100%' : props.width,
+    'data-test-id': props['data-test-id'],
   };
 
   if (!divider) {
@@ -83,12 +88,12 @@ export const Stack = forwardRef<HTMLElement, StackProps>((props, ref) => {
         {...commonProps}
         style={{
           gap: gap,
-          justifyContent: fluid ? "space-between" : undefined,
+          justifyContent: fluid ? 'space-between' : undefined,
           ...boxProps.style,
           ...props.style,
         }}
       >
-        {children}
+        {content}
       </Box>
     );
   } else {
@@ -97,15 +102,15 @@ export const Stack = forwardRef<HTMLElement, StackProps>((props, ref) => {
         {...commonProps}
         style={{
           gap: gap ? gap * 0.5 : undefined,
-          justifyContent: fluid ? "space-between" : undefined,
+          justifyContent: fluid ? 'space-between' : undefined,
           ...boxProps.style,
           ...props.style,
         }}
       >
-        {ReactChildren.map(children, (child, index) => (
+        {content.map((child, index) => (
           <Fragment key={index}>
             {child}
-            {index < ReactChildren.count(children) - 1 && divider}
+            {index < content.length - 1 && divider}
           </Fragment>
         ))}
       </Box>
