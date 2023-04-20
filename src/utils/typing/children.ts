@@ -1,1 +1,6 @@
-export type Children = React.ReactElement<unknown> | React.ReactElement<unknown>[] | boolean | null | undefined;
+export type Children =
+  | React.ReactElement<unknown>
+  | Array<Children>
+  | boolean
+  | null
+  | undefined;

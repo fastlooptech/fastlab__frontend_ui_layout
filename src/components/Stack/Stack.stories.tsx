@@ -115,3 +115,19 @@ export const RowDivider = () => (
     </Stack>
   </Box>
 );
+
+export const WithUndefinedElement = () => (
+  <Box>
+    <Stack
+      gap={3 * SPACE_UNIT}
+      style={{
+        background: "#EAEAFB",
+      }}
+    >
+      <Item />
+      <Item />
+      {undefined}
+      <Item />
+    </Stack>
+  </Box>
+);
