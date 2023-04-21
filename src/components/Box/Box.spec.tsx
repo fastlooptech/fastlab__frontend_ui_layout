@@ -1,7 +1,7 @@
 import { mount } from 'cypress/react';
 import { Box } from './Box';
 
-describe('View', () => {
+describe('Box', () => {
   it('should render successfully', () => {
     mount(
       <Box data-test-id="view" vAlignContent="center" hAlignContent="right" grow shrink wrap>
