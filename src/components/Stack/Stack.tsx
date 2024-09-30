@@ -1,6 +1,4 @@
-import { Children as ReactChildren, ComponentProps, Fragment, useEffect, useState } from 'react';
-import { forwardRef } from 'react';
-
+import { ComponentProps, Fragment, forwardRef } from 'react';
 import { Box } from '~/components/Box/Box';
 import { Children } from '~/utils/typing/children';
 
@@ -68,11 +66,8 @@ export type StackProps = Omit<ComponentProps<typeof Box>, 'size'> & {
 
 export const Stack = forwardRef<HTMLElement, StackProps>((props, ref) => {
   const { children, fluid, gap, divider, ...boxProps } = props;
-  const [content, setChildren] = useState<Children[]>(children.filter(child => !!child));
 
-  useEffect(() => {
-    setChildren(children.filter(child => !!child));
-  }, [children]);
+  const content = children.filter(child => !!child)
 
   const commonProps = {
     ...boxProps,
