@@ -30,7 +30,6 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
     }
   }
 
-  
   return (
     <div
       ref={ref}
@@ -94,3 +93,4 @@ export const Grid = {
   Container,
   Item,
 };
+

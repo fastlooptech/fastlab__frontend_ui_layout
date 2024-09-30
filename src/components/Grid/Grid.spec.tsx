@@ -1,10 +1,10 @@
-import { mount } from 'cypress/react';
-import { Box } from '~/index';
-import { Grid } from './Grid';
+import { mount } from "cypress/react";
+import { Box } from "~/index";
+import { Grid } from "./Grid";
 
 const SPACE_UNIT = 8;
-describe('Grid', () => {
-  it('Grid Container should have correct css props', () => {
+describe("Grid", () => {
+  it("Grid Container should have correct css props", () => {
     mount(
       <Grid.Container
         rows={3}
@@ -13,7 +13,7 @@ describe('Grid', () => {
         rowsGap={SPACE_UNIT}
         data-test-id="grid-container"
         style={{
-          background: 'red',
+          background: "red",
         }}
       >
         <Grid.Item data-test-id="grid-item-1">
@@ -22,17 +22,17 @@ describe('Grid', () => {
       </Grid.Container>
     );
     cy.get('[data-test-id="grid-container"]')
-      .should('exist')
+      .should("exist")
       .should(
-        'have.attr',
-        'style',
+        "have.attr",
+        "style",
         `display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); gap: ${SPACE_UNIT}px ${
           SPACE_UNIT * 4
         }px; background: red;`
       );
   });
 
-  it('Grid Container should have correct children', () => {
+  it("Grid Container should have correct children", () => {
     mount(
       <Grid.Container rows={3} cols={2} data-test-id="grid-container">
         <Grid.Item data-test-id="grid-item-1">
@@ -46,15 +46,29 @@ describe('Grid', () => {
         </Grid.Item>
       </Grid.Container>
     );
-    cy.get('[data-test-id="grid-container"]').children().should('have.length', 3);
+    cy.get('[data-test-id="grid-container"]')
+      .children()
+      .should("have.length", 3);
 
-    cy.get('[data-test-id="grid-container"]').should('exist').find('[data-test-id="grid-item-1"]').should('exist');
-    cy.get('[data-test-id="grid-container"]').should('exist').find('[data-test-id="grid-item-2"]').should('exist');
-    cy.get('[data-test-id="grid-container"]').should('exist').find('[data-test-id="grid-item-3"]').should('exist');
-    cy.get('[data-test-id="grid-container"]').should('exist').find('[data-test-id="grid-item-4"]').should('not.exist');
+    cy.get('[data-test-id="grid-container"]')
+      .should("exist")
+      .find('[data-test-id="grid-item-1"]')
+      .should("exist");
+    cy.get('[data-test-id="grid-container"]')
+      .should("exist")
+      .find('[data-test-id="grid-item-2"]')
+      .should("exist");
+    cy.get('[data-test-id="grid-container"]')
+      .should("exist")
+      .find('[data-test-id="grid-item-3"]')
+      .should("exist");
+    cy.get('[data-test-id="grid-container"]')
+      .should("exist")
+      .find('[data-test-id="grid-item-4"]')
+      .should("not.exist");
   });
 
-  it('Grid Items should have correct parent', () => {
+  it("Grid Items should have correct parent", () => {
     mount(
       <Grid.Container rows={3} cols={2} data-test-id="grid-container">
         <Grid.Item data-test-id="grid-item-1">
@@ -68,12 +82,18 @@ describe('Grid', () => {
         </Grid.Item>
       </Grid.Container>
     );
-    cy.get('[data-test-id="grid-item-1"]').should('exist').parent('[data-test-id="grid-container"]');
-    cy.get('[data-test-id="grid-item-2"]').should('exist').parent('[data-test-id="grid-container"]');
-    cy.get('[data-test-id="grid-item-3"]').should('exist').parent('[data-test-id="grid-container"]');
+    cy.get('[data-test-id="grid-item-1"]')
+      .should("exist")
+      .parent('[data-test-id="grid-container"]');
+    cy.get('[data-test-id="grid-item-2"]')
+      .should("exist")
+      .parent('[data-test-id="grid-container"]');
+    cy.get('[data-test-id="grid-item-3"]')
+      .should("exist")
+      .parent('[data-test-id="grid-container"]');
   });
 
-  it('Grid Items should have correct css', () => {
+  it("Grid Items should have correct css", () => {
     mount(
       <Grid.Container rows={3} cols={2} data-test-id="grid-container">
         <Grid.Item
@@ -83,7 +103,7 @@ describe('Grid', () => {
           rowEnd={3}
           data-test-id="grid-item-1"
           style={{
-            background: 'yellow',
+            background: "yellow",
           }}
         >
           <Box width={100} height={100} />
@@ -95,7 +115,7 @@ describe('Grid', () => {
           rowEnd={4}
           data-test-id="grid-item-2"
           style={{
-            background: 'green',
+            background: "green",
           }}
         >
           <Box width={100} height={100} />
@@ -105,7 +125,7 @@ describe('Grid', () => {
           rowStart={4}
           data-test-id="grid-item-3"
           style={{
-            background: 'red',
+            background: "red",
           }}
         >
           <Box width={100} height={100} />
@@ -113,13 +133,25 @@ describe('Grid', () => {
       </Grid.Container>
     );
     cy.get('[data-test-id="grid-item-1"]')
-      .should('exist')
-      .should('have.attr', 'style', `grid-area: 1 / 1 / 3 / 3; background: yellow;`);
+      .should("exist")
+      .should(
+        "have.attr",
+        "style",
+        `grid-area: 1 / 1 / 3 / 3; background: yellow;`
+      );
     cy.get('[data-test-id="grid-item-2"]')
-      .should('exist')
-      .should('have.attr', 'style', `grid-area: 2 / 2 / 4 / 2; background: green;`);
+      .should("exist")
+      .should(
+        "have.attr",
+        "style",
+        `grid-area: 2 / 2 / 4 / 2; background: green;`
+      );
     cy.get('[data-test-id="grid-item-3"]')
-      .should('exist')
-      .should('have.attr', 'style', `grid-column-start: 1; grid-row-start: 4; background: red;`);
+      .should("exist")
+      .should(
+        "have.attr",
+        "style",
+        `grid-column-start: 1; grid-row-start: 4; background: red;`
+      );
   });
 });

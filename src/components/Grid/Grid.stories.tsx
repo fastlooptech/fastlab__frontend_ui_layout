@@ -1,10 +1,10 @@
-import { Meta } from '@storybook/react/types-6-0';
-import { Box } from '../Box/Box';
-import { Grid } from './Grid';
-import palette from '../../../assets/fl-color-palette.json';
+import { Meta } from "@storybook/react/types-6-0";
+import { Box } from "../Box/Box";
+import { Grid } from "./Grid";
+import palette from "../../../assets/fl-color-palette.json";
 
 export default {
-  title: 'Foundations/Grid',
+  title: "Foundations/Grid",
   components: [Grid.Container, Grid.Item],
 } as Meta;
 

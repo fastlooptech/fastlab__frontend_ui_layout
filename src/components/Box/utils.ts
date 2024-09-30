@@ -52,28 +52,30 @@ export function alignPropToFlex(
   }
 }
 
-export function getHTMLElementProps(props: BoxProps): BoxProps & { [k in keyof BoxPropsOverride]?: never } {
-    const {
-      children,
-      className,
-      style,
-      column,
-      grow,
-      shrink,
-      basis,
-      wrap,
-      vAlignContent,
-      hAlignContent,
-      width,
-      height,
-      marginBottom,
-      marginTop,
-      marginLeft,
-      marginRight,
-      component,
-      'data-test-id': dataTestId,
-      ...rest
-    } = props;
+export function getHTMLElementProps(
+  props: BoxProps
+): BoxProps & { [k in keyof BoxPropsOverride]?: never } {
+  const {
+    children,
+    className,
+    style,
+    column,
+    grow,
+    shrink,
+    basis,
+    wrap,
+    vAlignContent,
+    hAlignContent,
+    width,
+    height,
+    marginBottom,
+    marginTop,
+    marginLeft,
+    marginRight,
+    component,
+    "data-test-id": dataTestId,
+    ...rest
+  } = props;
 
-    return rest;
-  }
+  return rest;
+}

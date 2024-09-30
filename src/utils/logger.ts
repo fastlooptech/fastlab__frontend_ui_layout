@@ -1,5 +1,5 @@
 function warn(warning: string): void {
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== "production") {
     console.warn(warning); // eslint-disable-line no-console
   }
 }
