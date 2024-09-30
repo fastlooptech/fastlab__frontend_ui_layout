@@ -1,4 +1,4 @@
-import { mount } from 'cypress/react';
+import { mount } from 'cypress/react18';
 import { Box } from './Box';
 
 describe('Box', () => {
@@ -21,9 +21,10 @@ describe('Box', () => {
 
     cy.get('[data-test-id=view]').should('exist');
     cy.get('[data-test-id=view]').should($el => {
+     console.log($el.attr("style"))
       expect($el).to.have.attr(
         'style',
-        'box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row nowrap; flex: 0 1 auto;'
+        'box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row; flex: 0 1 auto;'
       );
     });
   });
@@ -39,7 +40,7 @@ describe('Box', () => {
     cy.get('[data-test-id=view]').should($el => {
       expect($el).to.have.attr(
         'style',
-        'box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row wrap; flex: 1 1 auto; justify-content: flex-end; align-items: center;'
+        'box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: wrap; flex: 1 1 auto; justify-content: flex-end; align-items: center;'
       );
     });
   });

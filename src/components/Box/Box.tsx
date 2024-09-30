@@ -13,7 +13,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>((props, ref) => {
     ref,
     className: props.className,
     children: props.children,
-    boxSizing: "border-box",
+    style: {
+      boxSizing: "border-box",
     // some browsers don't set these by default on flex
     minWidth: 0,
     minHeight: 0,
@@ -32,7 +33,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>((props, ref) => {
       props.column ? props.hAlignContent : props.vAlignContent
     ),
     cursor: props.onClick ? "pointer" : undefined,
-    // style passed through props
     width: props.width,
     height: props.height,
     marginLeft: props.marginLeft,
@@ -40,6 +40,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>((props, ref) => {
     marginRight: props.marginRight,
     marginBottom: props.marginBottom,
     ...props.style,
+    },
     autoComplete:
       props.component === "form" && !props.autoComplete
         ? "off"
