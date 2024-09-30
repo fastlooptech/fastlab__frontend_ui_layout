@@ -53,7 +53,7 @@ describe("Stack", () => {
     cy.get('[data-test-id="stack"]').should(
       "have.attr",
       "style",
-      "box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: column; flex: 0 1 auto; gap: 24px;"
+      "box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: column nowrap; flex: 0 1 auto; gap: 24px;"
     );
   });
 
@@ -71,7 +71,7 @@ describe("Stack", () => {
     cy.get('[data-test-id="stack"]').should(
       "have.attr",
       "style",
-      "box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row; flex: 0 1 auto; justify-content: space-between; width: 100%;"
+      "box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row nowrap; flex: 0 1 auto; justify-content: space-between; width: 100%;"
     );
   });
 
@@ -88,7 +88,7 @@ describe("Stack", () => {
     cy.get('[data-test-id="stack"]').should(
       "have.attr",
       "style",
-      "box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: column; flex: 0 1 auto; justify-content: space-between; height: 100%;"
+      "box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: column nowrap; flex: 0 1 auto; justify-content: space-between; height: 100%;"
     );
   });
 
@@ -106,7 +106,7 @@ describe("Stack", () => {
     cy.get('[data-test-id="stack"]').should(
       "have.attr",
       "style",
-      "box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: wrap; flex: 0 1 auto; gap: 24px;"
+      "box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row wrap; flex: 0 1 auto; gap: 24px;"
     );
   });
 
@@ -125,7 +125,7 @@ describe("Stack", () => {
     cy.get('[data-test-id="stack"]').should(
       "have.attr",
       "style",
-      "box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row; flex: 0 1 auto; gap: 24px;"
+      "box-sizing: border-box; min-width: 0px; min-height: 0px; display: flex; flex-flow: row nowrap; flex: 0 1 auto; gap: 24px;"
     );
   });
 
