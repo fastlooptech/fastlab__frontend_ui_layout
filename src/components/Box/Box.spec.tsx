@@ -54,4 +54,5 @@ describe('Box', () => {
 
     cy.get('form[data-test-id=view]').should('exist');
   });
+  
 });
