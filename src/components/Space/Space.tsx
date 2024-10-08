@@ -1,8 +1,8 @@
-import { CSSProperties, forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { Box } from '~/components/Box/Box';
+import { CSSProperties, forwardRef } from "react";
+import { Box } from "~/components/Box/Box";
 
 export type SpaceProps = {
-  'data-test-id'?: string;
+  "data-test-id"?: string;
   /**
    * The class name to be applied to the component.
    * It can be used for CSS customizations.
@@ -38,49 +38,44 @@ export type SpaceProps = {
     }
 );
 
-export const Space = forwardRef<HTMLDivElement, SpaceProps>((props, forwardedRef) => {
-  const [parentDirection, setParentDirection] = useState<'column' | 'row'>('row');
-
-  const spaceRef = useRef<HTMLDivElement>(null);
-  useImperativeHandle(forwardedRef, () => spaceRef?.current as HTMLDivElement);
-
-  useEffect(() => {
-    if (spaceRef.current?.parentElement) {
-      switch (getComputedStyle(spaceRef.current.parentElement).flexDirection) {
-        case 'column':
-          setParentDirection('column');
-          break;
-        case 'row':
-          setParentDirection('row');
-          break;
-        default:
-          console.warn('Space: parent element has an invalid flex direction');
-          setParentDirection('row');
-          break;
-      }
-    }
-  }, []);
-
-  function boxProps() {
-    switch (parentDirection) {
-      case 'row':
-        const width = props.size;
-        return { width, basis: width };
-      case 'column':
-        const height = props.size;
-        return { height, basis: height };
-    }
+export const Space = forwardRef<HTMLDivElement, SpaceProps>(
+  (props, forwardedRef) => {
+    return (
+      <Box
+        data-test-id={props["data-test-id"]}
+        style={props.style}
+        className={props.className}
+        ref={forwardedRef}
+        {...boxProps(
+          forwardedRef instanceof HTMLDivElement ? forwardedRef : null,
+          props.size
+        )}
+        grow={props.fluid}
+        shrink={props.fluid}
+      />
+    );
   }
+);
 
-  return (
-    <Box
-      data-test-id={props['data-test-id']}
-      style={props.style}
-      className={props.className}
-      ref={spaceRef}
-      {...boxProps()}
-      grow={props.fluid}
-      shrink={props.fluid}
-    />
-  );
-});
+function boxProps(parentElement: HTMLElement | null, size: number | undefined) {
+  const parentDirection = getParentDirection(parentElement);
+
+  switch (parentDirection) {
+    case "row":
+      const width = size;
+      return { width, basis: width };
+    case "column":
+      const height = size;
+      return { height, basis: height };
+    default:
+      return {};
+  }
+}
+
+function getParentDirection(
+  parentElement: HTMLElement | null
+): "column" | "row" {
+  if (!parentElement) return "row";
+  const flexDirection = getComputedStyle(parentElement).flexDirection;
+  return flexDirection === "column" ? "column" : "row";
+}

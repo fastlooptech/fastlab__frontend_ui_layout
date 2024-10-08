@@ -1,9 +1,9 @@
-import { Meta } from '@storybook/react/types-6-0';
-import { Box } from '../Box/Box';
-import { Space } from './Space';
+import { Meta } from "@storybook/react/types-6-0";
+import { Box } from "../Box/Box";
+import { Space } from "./Space";
 
 export default {
-  title: 'Foundations/Space',
+  title: "Foundations/Space",
   component: Space,
 } as Meta;
 
@@ -15,8 +15,8 @@ export const Horizontal = () => (
     <Space
       size={2 * SPACE_UNIT}
       style={{
-        background: 'lightgray',
-        height: '16px',
+        background: "lightgray",
+        height: "16px",
       }}
     />
     <span>End</span>
@@ -29,8 +29,8 @@ export const Vertical = () => (
     <Space
       size={2 * SPACE_UNIT}
       style={{
-        background: 'lightgray',
-        width: '16px',
+        background: "lightgray",
+        width: "16px",
       }}
     />
     <span>End</span>
