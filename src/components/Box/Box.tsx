@@ -12,7 +12,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>((props, ref) => {
   return createElement(props.component || "div", {
     ref,
     className: props.className,
-    children: props.children,
     style: {
       boxSizing: "border-box",
       // some browsers don't set these by default on flex
@@ -47,5 +46,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>((props, ref) => {
         : props.autoComplete,
     "data-test-id": props["data-test-id"],
     ...getHTMLElementProps(props),
-  });
+  },
+  props.children
+  );
 });
